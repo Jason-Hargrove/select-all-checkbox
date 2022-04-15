@@ -6,7 +6,17 @@ const userData = [{ name: "Jason"}, { name: "Richard"}, { name: "Hargrove"}, { n
 function App() {
   return (
     <div className="App">
-
+      <form>
+        <h3>Select Someting</h3>
+        <div>
+          <input type="checkbox" />
+          <label>Select All</label>
+        </div>
+        <div>
+          <input type="checkbox" />
+          <label>User Name</label>
+        </div>
+      </form>
     </div>
   );
 }
