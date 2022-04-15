@@ -19,10 +19,17 @@ function App() {
 
   const handleChange = (e) => {
     const { name, checked } = e.target;
-    let tempUser = users.map((user) =>
-      user.name === name ? { ...user, isChecked: checked } : user
-    );
-    set_users(tempUser);
+    if (name === "allSelect") {
+      let tempUser = users.map((user) => {
+        return { ...user, isChecked: checked };
+      });
+      set_users(tempUser);
+    } else {
+      let tempUser = users.map((user) =>
+        user.name === name ? { ...user, isChecked: checked } : user
+      );
+      set_users(tempUser);
+    }
   };
 
   return (
@@ -30,7 +37,10 @@ function App() {
       <form>
         <h3>Select Someting</h3>
         <div>
-          <input type="checkbox" name={"allSelect"} onChange={handleChange} />
+          <input type="checkbox" 
+            name={"allSelect"} 
+            checked={users.filter(user => user?.isChecked !== true).length < 1} 
+            onChange={handleChange} />
           <label>Select All</label>
         </div>
         {users.map((user) => (
